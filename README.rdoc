@@ -7,14 +7,14 @@ As we all know , rails scaffold is a powerful cmd to auto generate the MVC struc
 
 
 == Installation
-./script/plugin install http://git@github.com:yautah/custom_scaffold.git
+./script/plugin install git://github.com/yautah/custom_scaffold.git
 
 
 == Usage examples
 
 As metioned , custom_generator is a simple plugin. Yes, acticully simple --- simple code and simple to use. 
 
-Just puts your own templates( such as 'controller.rb', 'view_index.html.erb', 'view_edit.html.erb', etc..) to the plugin's 'templates' folder, and then "./script/generate custom_scaffold your_model_name" , that's all!!
+Just puts your own templates( such as 'controller.rb', 'view_index.html.erb', 'view_edit.html.erb', etc..) to the plugin's 'templates' folder, (i have copied rails' original scaffold templates files to 'custom_scaffold/generators/templates/original_templates' folder, they are refrences') and then "./script/generate custom_scaffold your_model_name" , that's all!!
 
 
 <tt>./script/generate custom_scaffold model_name</tt>
