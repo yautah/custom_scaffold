@@ -1,0 +1,24 @@
+<%% content_for :title do %><%= singular_name %><%% end %>
+<%% content_for :comment do %>编辑<%= singular_name %><%% end %>
+
+<%% form_for(@<%= singular_name %>) do |f| %>
+  <%%= f.error_messages %>
+  
+  <fieldset>
+    <legend>基本信息</legend>
+    <table class="table-list" >
+<% for attribute in attributes -%>
+  <tr><td>
+    <%%= f.label :<%= attribute.name %> %></td><td colspan="3">
+    <%%= f.<%= attribute.field_type %> :<%= attribute.name %> %><span class="error"><%%=error_message_on "<%= singular_name %>", "<%= attribute.name %>" %></span></td></tr>
+<% end -%>      
+    </table>
+  </fieldset>  
+
+  <p>
+    <%%= f.submit '提交' %>
+  </p>
+<%% end %>
+
+<%%= link_to '查看', @<%= singular_name %> %> |
+<%%= link_to '返回', <%= plural_name %>_path %>

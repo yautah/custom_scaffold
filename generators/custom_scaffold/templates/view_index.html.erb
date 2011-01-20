@@ -1,0 +1,29 @@
+<%% content_for :title do %><%= plural_name %><%% end %>
+<%% content_for :comment do %><%= plural_name %>列表<%% end %>
+
+<div id="<%= plural_name %>_list">
+  <table width="98%" border="1" class="table-list">
+    <tr>
+      <% for attribute in attributes -%>
+        <th><%= attribute.column.human_name %></th>
+      <% end -%>
+      <th>创建时间</th>
+      <th>更新时间</th>
+      <th width="15%">操作</th>
+    </tr>
+    <%% for <%= singular_name %> in @<%= plural_name %> %>
+    <tr>
+      <% for attribute in attributes -%>
+        <td><%%=h <%= singular_name %>.<%= attribute.name %> %></td>
+      <% end -%>
+        <td><%%=h <%= singular_name %>.created_at %></td>
+        <td><%%=h <%= singular_name %>.updated_at %></td>
+      <td><%%= link_to '查看', <%= singular_name %> %>
+        <%%= link_to '编辑', edit_<%= singular_name %>_path(<%= singular_name %>) %>
+      <%%= link_to '删除', <%= singular_name %>, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+    <%% end -%>
+  </table>
+  <%%= link_to '新建', new_<%= singular_name %>_path %>
+  <%%= will_paginate  @<%= plural_name %>  %>
+</div>
